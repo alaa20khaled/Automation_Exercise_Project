@@ -6,32 +6,36 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class SignUpPage {
+public class HomePage {
     private WebDriver driver;
-   private WebDriverWait wait;
+    private WebDriverWait wait;
 
-    public SignUpPage(WebDriver driver) {
+    public HomePage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
     }
-    // Locators
-    private By userName=By.xpath("//input[@data-qa='signup-name']");
-    private By emailField=By.xpath("//input[@data-qa='signup-email']");
-    private By signupButton=By.xpath("//button[@data-qa='signup-button']");
 
+    private By homePage =By.id("slider");
+    private By signupPage=By.cssSelector("a[href='/login']");
+
+
+
+
+
+    public SignUpPage GoToSignupPage(){
+        waitForClickable(signupPage).click();
+        return new SignUpPage(driver);
+   }
 
     private WebElement waitForVisibility(By locator){
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
+
     private WebElement waitForClickable(By locator){
         return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
-    public void signup(String username,String email){
-        waitForVisibility(userName).sendKeys(username);
-        waitForVisibility(emailField).sendKeys(email);
-        waitForClickable(signupButton).click();
+    public boolean isHomePageDisplayed(){
+        return waitForVisibility(homePage).isDisplayed();
     }
-
-
 }
