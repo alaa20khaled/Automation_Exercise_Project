@@ -18,7 +18,7 @@ public class SignUpPage {
     private By userName=By.xpath("//input[@data-qa='signup-name']");
     private By emailField=By.xpath("//input[@data-qa='signup-email']");
     private By signupButton=By.xpath("//button[@data-qa='signup-button']");
-
+    private By signUpTitle=By.xpath("//h2[text()='New User Signup!']");
 
     private WebElement waitForVisibility(By locator){
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
@@ -26,11 +26,17 @@ public class SignUpPage {
     private WebElement waitForClickable(By locator){
         return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
-
+    public AccountInformationPage clickSignUpButton(){
+        waitForClickable(signupButton).click();
+        return new AccountInformationPage(driver);
+    }
     public void signup(String username,String email){
         waitForVisibility(userName).sendKeys(username);
         waitForVisibility(emailField).sendKeys(email);
-        waitForClickable(signupButton).click();
+
+    }
+    public boolean isNewUserSignupVisible(){
+        return waitForVisibility(signUpTitle).isDisplayed();
     }
 
 

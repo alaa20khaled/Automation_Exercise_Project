@@ -19,14 +19,6 @@ public class HomePage {
     private By signupPage=By.cssSelector("a[href='/login']");
 
 
-
-
-
-    public SignUpPage GoToSignupPage(){
-        waitForClickable(signupPage).click();
-        return new SignUpPage(driver);
-   }
-
     private WebElement waitForVisibility(By locator){
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
@@ -34,6 +26,15 @@ public class HomePage {
     private WebElement waitForClickable(By locator){
         return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
+
+
+    public SignUpPage GoToSignupPage(){
+        waitForClickable(signupPage).click();
+        return new SignUpPage(driver);
+   }
+
+
+
 
     public boolean isHomePageDisplayed(){
         return waitForVisibility(homePage).isDisplayed();
