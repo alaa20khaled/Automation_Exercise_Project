@@ -17,7 +17,7 @@ public class RegistrationTests extends BaseTests{
         assertTrue(accountInformationPage.isAccountInformationDisplayed(),"account information is not displayed");
         accountInformationPage.selectGender("Mr");
 
-    }
+   }
     @Test
     public void testSignupWithEmptyUserName(){
         SignUpPage signUpPage=homePage.GoToSignupPage();
