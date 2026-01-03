@@ -13,7 +13,9 @@ public class RegistrationTests extends BaseTests{
     public void testVaildSignup(){
         SignUpPage signUpPage=homePage.GoToSignupPage();
         signUpPage.signup("abcd","abcd@com.c");
-        signUpPage.clickSignUpButton();
+        AccountInformationPage accountInformationPage=signUpPage.clickSignUpButton();
+        assertTrue(accountInformationPage.isAccountInformationDisplayed(),"account information is not displayed");
+        accountInformationPage.selectGender("Mr");
 
     }
     @Test
