@@ -34,8 +34,6 @@ public class HomePage {
    }
 
 
-
-
     public boolean isHomePageDisplayed(){
         return waitForVisibility(homePage).isDisplayed();
     }

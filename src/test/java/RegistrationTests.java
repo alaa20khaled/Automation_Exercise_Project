@@ -1,3 +1,4 @@
+import model.User;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.*;
@@ -15,7 +16,25 @@ public class RegistrationTests extends BaseTests{
         signUpPage.signup("abcd","abcd@com.c");
         AccountInformationPage accountInformationPage=signUpPage.clickSignUpButton();
         assertTrue(accountInformationPage.isAccountInformationDisplayed(),"account information is not displayed");
-        accountInformationPage.selectGender("Mr");
+        User user = new User(
+                "Mr",
+                "123456",
+                "10",
+                "May",
+                "1999",
+                "Alaa",
+                "Khaled",
+                "MyCompany",
+                "Alexandria street",
+                "Alexandria",
+                "Texas",
+                "12345",
+                "0100000000",
+                "12345",
+                "012345678912"
+        );
+
+        accountInformationPage.fillAccountInformation(user);
 
    }
     @Test

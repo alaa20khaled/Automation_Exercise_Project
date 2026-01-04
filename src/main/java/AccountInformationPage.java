@@ -1,3 +1,4 @@
+import model.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,7 +22,20 @@ public class AccountInformationPage {
     private By monthDropDownList=By.id("months");
     private By yearDropDownList =By.id("years");
 
-    //locators (address Information)
+    //locators (address Information)  First name, Last name, Company,
+
+    private By firstName=By.id("first_name");
+    private By lastName=By.id("last_name");
+    private By company=By.id("company");
+    private By address =By.id("address1");
+    private By secondAddress= By.id("address2");
+    private By countryList =By.id("country");
+    private By state=By.id("state");
+    private By city=By.id("city");
+    private By zipcode=By.id("zipcode");
+    private By mobileNum = By.id("mobile_number");
+    private By createAccountBtn=By.xpath("//button[text()='Create Account']");
+
 
 
 
@@ -38,15 +52,16 @@ public class AccountInformationPage {
         return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
     public Select selectItem(By locator){
-        return  new Select(waitForVisibility(locator));
+        return new Select(waitForVisibility(locator));
 
     }
     //AccountInformation
-    public Boolean isAccountInformationDisplayed (){
+    public boolean isAccountInformationDisplayed(){
        return waitForVisibility(accountInformationTitle).isDisplayed();
     }
     public void selectGender(String title){
         By maleOrFemaleRadioBtn=By.xpath("//label[text()='"+title+".']");
+        waitForClickable(maleOrFemaleRadioBtn).click();
     }
     public void enterPassword(String password){
         waitForVisibility(enterPassword).sendKeys(password);
@@ -75,10 +90,58 @@ public class AccountInformationPage {
     public void clickOffersBtn(){
         waitForClickable(offersBtn).click();
     }
-   // public void fillAccountInformation(String gender,String password, ){
-    // }
+   public void fillAccountInformation(User user){
+        selectGender(user.getTitle());
+        enterPassword(user.getPassword());
+        selectBirthdate(user.getDay(), user.getMonth(), user.getYear());
+        clickNewsLetterBtn();
+        clickOffersBtn();
+        enterFirstName(user.getFirstName());
+        enterLastName(user.getLastName());
+        enterCompanyName(user.getCompany());
+        enterAddress(user.getAddress1());
+        enterAddress2(user.getAddress2());
+        enterCountryName(user.getCountry());
+        enterCityName(user.getCity());
+        enterStateName(user.getState());
+        enterZIPCode(user.getZIPCode());
+        enterMobilNumber(user.getMobileNumber());
+     }
 
 
 
     //Address Information
+    public void enterFirstName(String fName){
+        waitForVisibility(firstName).sendKeys(fName);
+    }
+    public void enterLastName(String lName){
+        waitForVisibility(lastName).sendKeys(lName);
+    }
+    public void enterCompanyName(String companyName){
+        waitForVisibility(company).sendKeys(companyName);
+    }
+    public void enterAddress(String address1){
+        waitForVisibility(address).sendKeys(address1);
+    }
+    public void enterAddress2(String address2){
+        waitForVisibility(secondAddress).sendKeys(address2);
+    }
+    public void enterCountryName(String countryName){
+        selectItem(countryList).selectByVisibleText(countryName);
+    }
+    public void enterStateName(String stateName){
+        waitForVisibility(state).sendKeys(stateName);
+    }
+    public void enterCityName(String cityName){
+        waitForVisibility(city).sendKeys(cityName);
+    }
+    public void enterZIPCode(String ZIPCode ){
+        waitForVisibility(zipcode).sendKeys(ZIPCode);
+    }
+    public void enterMobilNumber(String mobNumber){
+        waitForVisibility(mobileNum).sendKeys(mobNumber);
+    }
+    public void clickCreateAccountBtn(){
+        waitForClickable(createAccountBtn).click();
+    }
 }
