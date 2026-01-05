@@ -17,6 +17,8 @@ public class HomePage {
 
     private By homePage =By.id("slider");
     private By signupPage=By.cssSelector("a[href='/login']");
+    private By loggedInAsUser=By.xpath("//a[contain(text(),' Logged in as ')]");
+    private By deleteAccount=By.xpath("//a[text()=' Delete Account']");
 
 
     private WebElement waitForVisibility(By locator){
@@ -36,5 +38,12 @@ public class HomePage {
 
     public boolean isHomePageDisplayed(){
         return waitForVisibility(homePage).isDisplayed();
+    }
+    public boolean isLoggedInAsVisible(){
+        return waitForVisibility(loggedInAsUser).isDisplayed();
+    }
+    public DeleteAccountPage clickDeleteAccountBtn(){
+        waitForClickable(deleteAccount).click();
+        return new DeleteAccountPage(driver);
     }
 }

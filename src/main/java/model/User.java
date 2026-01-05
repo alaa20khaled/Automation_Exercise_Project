@@ -86,7 +86,10 @@ public class User {
         this.lastName = lastName;
     }
 
-    public User(String title, String password, String day, String month, String year, String firstName, String lastName, String company, String address1, String address2, String country, String city, String state, String ZIPCode, String mobileNumber) {
+    public User(String title, String password, String day, String month, String year,
+                String firstName, String lastName, String company,
+                String address1, String address2, String country,
+                String city, String state, String ZIPCode, String mobileNumber) {
         this.title = title;
         this.password = password;
         this.day = day;

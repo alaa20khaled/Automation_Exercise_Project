@@ -22,7 +22,7 @@ public class AccountInformationPage {
     private By monthDropDownList=By.id("months");
     private By yearDropDownList =By.id("years");
 
-    //locators (address Information)  First name, Last name, Company,
+    //locators (address Information)
 
     private By firstName=By.id("first_name");
     private By lastName=By.id("last_name");
@@ -141,7 +141,8 @@ public class AccountInformationPage {
     public void enterMobilNumber(String mobNumber){
         waitForVisibility(mobileNum).sendKeys(mobNumber);
     }
-    public void clickCreateAccountBtn(){
+    public AccountCreatedPage clickCreateAccountBtn(){
         waitForClickable(createAccountBtn).click();
+        return new AccountCreatedPage(driver);
     }
 }
