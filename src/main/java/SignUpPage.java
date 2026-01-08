@@ -6,13 +6,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class SignUpPage {
-    private WebDriver driver;
-   private WebDriverWait wait;
+public class SignUpPage extends BasePage{
+
 
     public SignUpPage(WebDriver driver) {
-        this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        super(driver);
     }
     // Locators
     private By userName=By.xpath("//input[@data-qa='signup-name']");
@@ -20,12 +18,7 @@ public class SignUpPage {
     private By signupButton=By.xpath("//button[@data-qa='signup-button']");
     private By signUpTitle=By.xpath("//h2[text()='New User Signup!']");
 
-    private WebElement waitForVisibility(By locator){
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-    }
-    private WebElement waitForClickable(By locator){
-        return wait.until(ExpectedConditions.elementToBeClickable(locator));
-    }
+
     public AccountInformationPage clickSignUpButton(){
         waitForClickable(signupButton).click();
         return new AccountInformationPage(driver);

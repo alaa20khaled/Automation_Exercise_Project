@@ -8,12 +8,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class AccountInformationPage {
+public class AccountInformationPage extends BasePage{
 
-    private WebDriver driver;
-    private WebDriverWait wait;
+
 
     //locators (accountInformation)
+    private By maleRadio = By.id("id_gender1");
+    private By femaleRadio = By.id("id_gender2");
     private By accountInformationTitle= By.xpath("//h2//b[text()='Enter Account Information']");
     private By enterPassword=By.id("password");
     private By newsLetterBtn=By.id("newsletter");
@@ -40,29 +41,26 @@ public class AccountInformationPage {
 
 
     public AccountInformationPage(WebDriver driver) {
-        this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+       super(driver);
     }
 
-    private WebElement waitForVisibility(By locator){
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-    }
 
-    private WebElement waitForClickable(By locator){
-        return wait.until(ExpectedConditions.elementToBeClickable(locator));
-    }
     public Select selectItem(By locator){
         return new Select(waitForVisibility(locator));
 
     }
     //AccountInformation
+    public void selectGender(String title){
+        if(title.equalsIgnoreCase("Mr")){
+            waitForClickable(maleRadio).click();
+        } else {
+            waitForClickable(femaleRadio).click();
+        }
+    }
     public boolean isAccountInformationDisplayed(){
        return waitForVisibility(accountInformationTitle).isDisplayed();
     }
-    public void selectGender(String title){
-        By maleOrFemaleRadioBtn=By.xpath("//label[text()='"+title+".']");
-        waitForClickable(maleOrFemaleRadioBtn).click();
-    }
+
     public void enterPassword(String password){
         waitForVisibility(enterPassword).sendKeys(password);
     }
@@ -96,17 +94,29 @@ public class AccountInformationPage {
         selectBirthdate(user.getDay(), user.getMonth(), user.getYear());
         clickNewsLetterBtn();
         clickOffersBtn();
-        enterFirstName(user.getFirstName());
-        enterLastName(user.getLastName());
-        enterCompanyName(user.getCompany());
-        enterAddress(user.getAddress1());
-        enterAddress2(user.getAddress2());
-        enterCountryName(user.getCountry());
-        enterCityName(user.getCity());
-        enterStateName(user.getState());
-        enterZIPCode(user.getZIPCode());
-        enterMobilNumber(user.getMobileNumber());
+       enterFirstName(user.getFirstName());
+       enterLastName(user.getLastName());
+       enterCompanyName(user.getCompany());
+       enterAddress(user.getAddress1());
+       enterAddress2(user.getAddress2());
+       enterCountryName(user.getCountry());
+       enterCityName(user.getCity());
+       enterStateName(user.getState());
+       enterZIPCode(user.getZIPCode());
+       enterMobilNumber(user.getMobileNumber());
      }
+//     public void fillAddressInformation(User user){
+//         enterFirstName(user.getFirstName());
+//         enterLastName(user.getLastName());
+//         enterCompanyName(user.getCompany());
+//         enterAddress(user.getAddress1());
+//         enterAddress2(user.getAddress2());
+//         enterCountryName(user.getCountry());
+//         enterCityName(user.getCity());
+//         enterStateName(user.getState());
+//         enterZIPCode(user.getZIPCode());
+//         enterMobilNumber(user.getMobileNumber());
+//     }
 
 
 

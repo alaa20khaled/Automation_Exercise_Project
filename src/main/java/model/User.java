@@ -2,13 +2,74 @@ package model;
 
 public class User {
 
+    private String title;
+    private String password;
+    private String day;
+    private String month;
+    private String year;
+
+    private String firstName;
+    private String lastName;
+    private String company;
+    private String address1;
+    private String address2;
+    private String country;
+    private String city;
+    private String state;
+    private String zipCode;
+    private String mobileNumber;
+
+    private User(Builder builder) {
+        this.title = builder.title;
+        this.password = builder.password;
+        this.day = builder.day;
+        this.month = builder.month;
+        this.year = builder.year;
+        this.firstName = builder.firstName;
+        this.lastName = builder.lastName;
+        this.company = builder.company;
+        this.address1 = builder.address1;
+        this.address2 = builder.address2;
+        this.country = builder.country;
+        this.city = builder.city;
+        this.state = builder.state;
+        this.zipCode = builder.zipCode;
+        this.mobileNumber = builder.mobileNumber;
+    }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    // ========= Getters فقط =========
+    public String getTitle() { return title; }
+    public String getPassword() { return password; }
+    public String getDay() { return day; }
+    public String getMonth() { return month; }
+    public String getYear() { return year; }
+    public String getFirstName() { return firstName; }
+    public String getLastName() { return lastName; }
+    public String getCompany() { return company; }
+    public String getAddress1() { return address1; }
+    public String getAddress2() { return address2; }
+    public String getCountry() { return country; }
+    public String getCity() { return city; }
+    public String getState() { return state; }
+    public String getZipCode() { return zipCode; }
+    public String getMobileNumber() { return mobileNumber; }
+
+    public String getZIPCode() {
+        return zipCode;
+    }
+
+    // ========= Builder =========
+    public static class Builder {
+
         private String title;
         private String password;
         private String day;
         private String month;
         private String year;
-
-
         private String firstName;
         private String lastName;
         private String company;
@@ -17,145 +78,86 @@ public class User {
         private String country;
         private String city;
         private String state;
+        private String zipCode;
+        private String mobileNumber;
 
-    public String getZIPCode() {
-        return ZIPCode;
+        public Builder title(String title) {
+            this.title = title;
+            return this;
+        }
+
+        public Builder password(String password) {
+            this.password = password;
+            return this;
+        }
+
+        public Builder day(String day) {
+            this.day = day;
+            return this;
+        }
+
+        public Builder month(String month) {
+            this.month = month;
+            return this;
+        }
+
+        public Builder year(String year) {
+            this.year = year;
+            return this;
+        }
+
+        public Builder firstName(String firstName) {
+            this.firstName = firstName;
+            return this;
+        }
+
+        public Builder lastName(String lastName) {
+            this.lastName = lastName;
+            return this;
+        }
+
+        public Builder company(String company) {
+            this.company = company;
+            return this;
+        }
+
+        public Builder address1(String address1) {
+            this.address1 = address1;
+            return this;
+        }
+
+        public Builder address2(String address2) {
+            this.address2 = address2;
+            return this;
+        }
+
+        public Builder country(String country) {
+            this.country = country;
+            return this;
+        }
+
+        public Builder city(String city) {
+            this.city = city;
+            return this;
+        }
+
+        public Builder state(String state) {
+            this.state = state;
+            return this;
+        }
+
+        public Builder zipCode(String zipCode) {
+            this.zipCode = zipCode;
+            return this;
+        }
+
+        public Builder mobileNumber(String mobileNumber) {
+            this.mobileNumber = mobileNumber;
+            return this;
+        }
+
+        public User build() {
+            return new User(this);
+        }
     }
-
-    public String getMobileNumber() {
-        return mobileNumber;
-    }
-
-    private String ZIPCode;
-    private String mobileNumber;
-
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getDay() {
-        return day;
-    }
-
-    public void setDay(String day) {
-        this.day = day;
-    }
-
-    public String getMonth() {
-        return month;
-    }
-
-    public void setMonth(String month) {
-        this.month = month;
-    }
-
-    public String getYear() {
-        return year;
-    }
-
-    public void setYear(String year) {
-        this.year = year;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public User(String title, String password, String day, String month, String year,
-                String firstName, String lastName, String company,
-                String address1, String address2, String country,
-                String city, String state, String ZIPCode, String mobileNumber) {
-        this.title = title;
-        this.password = password;
-        this.day = day;
-        this.month = month;
-        this.year = year;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.company = company;
-        this.address1 = address1;
-        this.address2 = address2;
-        this.country = country;
-        this.city = city;
-        this.state = state;
-        this.ZIPCode = ZIPCode;
-        this.mobileNumber = mobileNumber;
-    }
-
-    public String getCompany() {
-        return company;
-    }
-
-    public void setCompany(String company) {
-        this.company = company;
-    }
-
-    public String getAddress1() {
-        return address1;
-    }
-
-    public void setAddress1(String address1) {
-        this.address1 = address1;
-    }
-
-    public String getAddress2() {
-        return address2;
-    }
-
-    public void setAddress2(String address2) {
-        this.address2 = address2;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-
-
-
 }

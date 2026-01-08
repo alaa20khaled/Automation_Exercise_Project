@@ -1,17 +1,22 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
+public class DeleteAccountPage extends BasePage{
 
-public class DeleteAccountPage {
-    private WebDriver driver;
-    private WebDriverWait wait;
 //Constructor
     public DeleteAccountPage(WebDriver drivr) {
-        this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        super(drivr);
     }
 //Locators
     private By deleteAccountTitle=By.xpath("//b[text()='Account Deleted!']");
+    private By continueAfterDeleteBtn=By.xpath("//a[text()='Continue']");
+
+    public boolean isAccountDeletedVisible(){
+        return waitForVisibility(deleteAccountTitle).isDisplayed();
+    }
+    public HomePage clickContinueBtnToHome(){
+        waitForClickable(continueAfterDeleteBtn).click();
+        return new HomePage(driver);
+    }
+
 }

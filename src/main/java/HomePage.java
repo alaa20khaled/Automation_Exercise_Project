@@ -6,34 +6,29 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class HomePage {
-    private WebDriver driver;
-    private WebDriverWait wait;
+public class HomePage extends BasePage{
+
 
     public HomePage(WebDriver driver) {
-        this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        super(driver);
     }
 
     private By homePage =By.id("slider");
     private By signupPage=By.cssSelector("a[href='/login']");
-    private By loggedInAsUser=By.xpath("//a[contain(text(),' Logged in as ')]");
+    private By loggedInAsUser=By.xpath("//a[contains(text(),' Logged in as ')]");
     private By deleteAccount=By.xpath("//a[text()=' Delete Account']");
 
 
-    private WebElement waitForVisibility(By locator){
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-    }
-
-    private WebElement waitForClickable(By locator){
-        return wait.until(ExpectedConditions.elementToBeClickable(locator));
-    }
-
-
-    public SignUpPage GoToSignupPage(){
+    public SignUpPage GoToSignUpPage(){
         waitForClickable(signupPage).click();
         return new SignUpPage(driver);
+
    }
+    public LoginPage GoToLoginPage(){
+        waitForClickable(signupPage).click();
+        return new LoginPage(driver);
+
+    }
 
 
     public boolean isHomePageDisplayed(){
@@ -46,4 +41,5 @@ public class HomePage {
         waitForClickable(deleteAccount).click();
         return new DeleteAccountPage(driver);
     }
+
 }

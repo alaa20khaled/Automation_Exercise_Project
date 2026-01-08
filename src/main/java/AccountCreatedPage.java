@@ -6,24 +6,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class AccountCreatedPage {
-   private WebDriver driver;
-   private WebDriverWait wait;
+public class AccountCreatedPage extends BasePage{
+
 
     public AccountCreatedPage(WebDriver driver) {
-        this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+     super(driver);
     }
     private By accountCreatedTitle=By.xpath("//b[text()='Account Created!']");
     private By continueBtn=By.xpath("//a[text()='Continue']");
 
-    private WebElement waitForVisibility(By locator){
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-    }
 
-    private WebElement waitForClickable(By locator){
-        return wait.until(ExpectedConditions.elementToBeClickable(locator));
-    }
 
     public boolean isAccountCreatedVisible(){
        return waitForVisibility(accountCreatedTitle).isDisplayed();
