@@ -17,7 +17,7 @@ public class HomePage extends BasePage{
     private By signupPage=By.cssSelector("a[href='/login']");
     private By loggedInAsUser=By.xpath("//a[contains(text(),' Logged in as ')]");
     private By deleteAccount=By.xpath("//a[text()=' Delete Account']");
-
+    private By logoutBtn=By.xpath("//a[text()=' Logout']");
 
     public SignUpPage GoToSignUpPage(){
         waitForClickable(signupPage).click();
@@ -41,5 +41,9 @@ public class HomePage extends BasePage{
         waitForClickable(deleteAccount).click();
         return new DeleteAccountPage(driver);
     }
+    public void clickLogoutBtn(){
+        waitForClickable(logoutBtn).click();
+    }
+
 
 }

@@ -9,7 +9,7 @@ public class LoginPage extends BasePage{
     private By emailField =By.xpath("//input[@data-qa='login-email']");
     private By passwordField=By.xpath("//input[@data-qa='login-password']");
     private By loginBtn=By.xpath("//button[@data-qa='login-button']");
-
+    private By errorMessage=By.xpath("//p[text()='Your email or password is incorrect!']");
 
     public boolean isLoginTitleVisible(){
         return waitForVisibility(loginPageTitle).isDisplayed();
@@ -26,6 +26,9 @@ public class LoginPage extends BasePage{
     }
     public void clickLoginBtn(){
         waitForClickable(loginBtn).click();
+    }
+    public boolean isErrorMessageDisplayed(){
+        return waitForVisibility(errorMessage).isDisplayed();
     }
 
 }
