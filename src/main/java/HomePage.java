@@ -18,6 +18,8 @@ public class HomePage extends BasePage{
     private By loggedInAsUser=By.xpath("//a[contains(text(),' Logged in as ')]");
     private By deleteAccount=By.xpath("//a[text()=' Delete Account']");
     private By logoutBtn=By.xpath("//a[text()=' Logout']");
+    private By contactUsBtn=By.xpath("//a[text()=' Contact us']");
+    private By testCasesBtn=By.xpath("//a[text()=' Test Cases']");
 
     public SignUpPage GoToSignUpPage(){
         waitForClickable(signupPage).click();
@@ -44,6 +46,13 @@ public class HomePage extends BasePage{
     public void clickLogoutBtn(){
         waitForClickable(logoutBtn).click();
     }
-
+    public ContactUSPage clickContactUsBtn(){
+        waitForClickable(contactUsBtn).click();
+        return new ContactUSPage(driver);
+    }
+    public TestCasesPage clickTestCasesBtn(){
+        waitForClickable(testCasesBtn).click();
+        return new TestCasesPage(driver);
+    }
 
 }
