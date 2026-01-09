@@ -17,6 +17,7 @@ public class SignUpPage extends BasePage{
     private By emailField=By.xpath("//input[@data-qa='signup-email']");
     private By signupButton=By.xpath("//button[@data-qa='signup-button']");
     private By signUpTitle=By.xpath("//h2[text()='New User Signup!']");
+    private By errorRegisteredEmail =By.xpath("//p[text()='Email Address already exist!']");
 
 
     public AccountInformationPage clickSignUpButton(){
@@ -31,6 +32,8 @@ public class SignUpPage extends BasePage{
     public boolean isNewUserSignupVisible(){
         return waitForVisibility(signUpTitle).isDisplayed();
     }
-
+    public boolean isExistingEmailErrorDisplayed(){
+      return   waitForVisibility(errorRegisteredEmail).isDisplayed();
+    }
 
 }

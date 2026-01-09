@@ -105,20 +105,6 @@ public class AccountInformationPage extends BasePage{
        enterZIPCode(user.getZIPCode());
        enterMobilNumber(user.getMobileNumber());
      }
-//     public void fillAddressInformation(User user){
-//         enterFirstName(user.getFirstName());
-//         enterLastName(user.getLastName());
-//         enterCompanyName(user.getCompany());
-//         enterAddress(user.getAddress1());
-//         enterAddress2(user.getAddress2());
-//         enterCountryName(user.getCountry());
-//         enterCityName(user.getCity());
-//         enterStateName(user.getState());
-//         enterZIPCode(user.getZIPCode());
-//         enterMobilNumber(user.getMobileNumber());
-//     }
-
-
 
     //Address Information
     public void enterFirstName(String fName){

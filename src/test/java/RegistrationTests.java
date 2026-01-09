@@ -42,14 +42,12 @@ public void testValidSignup() {
             .build();
 
     accountInformationPage.fillAccountInformation(user);
-    accountInformationPage.fillAccountInformation(user);
+
     AccountCreatedPage accountCreatedPage =
             accountInformationPage.clickCreateAccountBtn();
     assertTrue(accountCreatedPage.isAccountCreatedVisible(),
             "Account Created message is not visible");
 
-    assertTrue(accountCreatedPage.isAccountCreatedVisible(),
-            "Account Created message is not visible");
 
     HomePage loggedHome =
             accountCreatedPage.clickContinueBtn();
@@ -65,14 +63,18 @@ public void testValidSignup() {
     deleteAccountPage.clickContinueBtnToHome();
 }
     @Test
-    public void testSignupWithEmptyUserName(){
+    public void testRegisterUserWithExistingEmail(){
+
         SignUpPage signUpPage=homePage.GoToSignUpPage();
-        signUpPage.signup("","abcd@com.c");
+        assertTrue(signUpPage.isNewUserSignupVisible());
+        signUpPage.signup("aaa","alaa@wa.co");
         signUpPage.clickSignUpButton();
+        assertTrue(signUpPage.isExistingEmailErrorDisplayed());
     }
     @Test
     public void testSignupWithEmptyEmail(){
         SignUpPage signUpPage=homePage.GoToSignUpPage();
+
         signUpPage.signup("abcd","");
         signUpPage.clickSignUpButton();
     }

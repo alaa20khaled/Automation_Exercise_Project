@@ -41,7 +41,6 @@ public class User {
         return new Builder();
     }
 
-    // ========= Getters فقط =========
     public String getTitle() { return title; }
     public String getPassword() { return password; }
     public String getDay() { return day; }
